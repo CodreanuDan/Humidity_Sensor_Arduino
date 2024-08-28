@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ro-RO">
+<head>
+    <title>Proiect Senzori inteligenți</title>
+    <meta charset="utf-8" />
+    <meta name="robots" contents="index, follow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Valorile umiditatii  etc" />
+    <meta property="og:title" content="Proiect Senzori inteligenti" />
+    <meta property="og:site_name" content="Senzori Inteligenți" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ro_RO" />
+    <meta property="og:url" content="https://www.Senzori_Inteligenți.ro/proiect"/>
+    <meta property="og:image" content="og-image.jpg" /> <!-- TODO-->
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta http-equiv="refresh" content="2" > <!-- EL SE OCUPA DE UPDATE LA PAGINA-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <!-- FusionCharts core library -->
+    <script type="text/javascript" src="/path/to/fusioncharts.js"></script>
+    <!-- Adaugă jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!-- Adaugă scriptul pentru actualizarea datelor -->
+    <script>
+
+    // Funcție pentru a actualiza datele și re-desena graficul
+    function updateChartData() {
+        $.get("/date_senzori", function(data) {
+            // Actualizează valorile x și y
+            const xValues = data['iteration'];
+            const yValues = data['rh'];
+
+            // Găsește graficul după ID și actualizează datele
+            const chart = Chart.getChart("myChart");
+            chart.data.labels = xValues;
+            chart.data.datasets[0].data = yValues;
+
+            // Re-desenează graficul
+            chart.update();
+            });
+        }
+
+    // Actualizează datele la fiecare 5 secunde
+    setInterval(updateChartData, 5000);
+</script>
+    <style>     
+        body {
+                border: 8px solid rgb(56, 215, 20);
+                padding: 30px;
+
+                background-image: url('background.jpg');
+                background-size: cover;
+          }
+        footer {
+            background-color: white; /* Setează culoarea fundalului la alb */
+            padding: 10px; /* Adaugă un spațiu între conținut și margine */
+            text-align: center; /* Aliniază textul în centru, dacă este cazul */
+        }
+          /* Style buttons */
+        .btn {
+        background-color: rgb(21, 215, 41);
+        border: none;
+        color: white;
+        padding: 12px 30px;
+        cursor: pointer;
+        font-size: 20px;
+        }
+
+        /* Darker background on mouse-over */
+        .btn:hover {
+        background-color: rgb(4, 156, 14);
+        }
+        </style> 
+</head> 
+<body>
+    <div class="Container">
+        <header>     
+            <h1 class="TitlulPaginii">
+                <strong> Senzor Umidiate Aer - bazat pe condensatorul senzorului DHT 11- <span style="color:rgb(255, 255, 255);" id="ValoareUmiditateDHT" class="ValoareUmiditateDHT">{{ senzori.date_time }} </span> </strong>
+            </h1>
+            <p class="DescrierePrincipala">Comparatie intre umidiatea masurata de DHT 11 si umidiatea masurata de condensator dupa calibrare.
+            </p>
+        </header>
+        <main>
+            <ul class="Proiect">
+                <li class="Detalii senzor">
+                    <span class="ListaLink" title="Umiditate DHT">
+                        <h2 class="ListaTitlu">☄💧 Val. umidiate masurata de  DHT 11:</h2> 
+                        <p class="ListaValori">>>Procentul de umidiate este______👉 <span style="color:blue;" id="ValoareUmiditateDHT" class="ValoareUmiditateDHT">{{ senzori.umiditate_dht }}</span> <span style="color:blue;"> % </span> </p>
+                    </span>
+                </li>
+                <li class="Detalii senzor">
+                    <span class="ListaLink" title="Umiditate condensator">
+                        <h2 class="ListaTitlu">⛁💧 Val. umidiate masurata de condensatorul calibrat(calibrat prin formula matematica/esantionare):</h2>
+                        <p class="ListaValori">>>Procentul de umidiate___________👉 <span style="color:blue;" id="ValoareUmiditateDHT"class="ValoareUmiditateCondensator">{{ senzori.umiditate_condensator }}</span> <span style="color:blue;"> % </span> </p>
+                    </span>
+                </li>
+                <li class="Detalii senzor">
+                    <span class="ListaLink" title="Capacitate condensator">
+                        <h2 class="ListaTitlu">⚡Capacitate condensator (in nF; se modifica in functie de umiditatea aerului):</h2>
+                        <p class="ListaValori">>>Capacitatea condensatorului_____👉 <span style="color:blue;" id= "ValoareCapacitate"class="ValoareCapacitate">{{ senzori.capacitate_condensator }}</span> <span style="color:blue;"> nF </span> </p>
+                    </span>
+                </li>
+                <li class="Detalii senzor">
+                    <span class="ListaLink" title="Nr. masuratoatare">
+                        <h2 class="ListaTitlu">⏰ Counter masurari:</h2>
+                        <p class="ListaValori">>>Masuratoarea nr________________👉 <span style="color:blue;" id="ValoareCapacitate" class="ValoareCapacitate">{{ senzori.nr_masurari }} </span>  </p>
+                    </span>
+                </li>
+            </ul>
+        </main>
+        <footer>
+            <!-- Aici puteți adăuga orice conținut pentru zona de subsol -->
+            <a href="https://www.tinkercad.com/things/dr2QzzeNIsl?sharecode=KYGpsa-w2-o5Wj-UnMkk2HqtVg5c03bUycDkxsM94os">Interfatare directa senzor capacitiv</a>
+                <p> Click the below button to download the CSV_log </p>
+                <a href = "D:\FACULTATE\AN4\Semestrul 1\Senzori inteligenti\Proiect\Cod_proiect\temp_data.csv"
+                Download = "CSV_log.csv">
+                <!-- <button class="btn" style="font-size:100%;" > Download CSV Log</button> -->
+                </a>
+            </div>
+
+           <!-- --------------------------------------------------------------------------------------------------------------->
+            <!-- <div id="chart-container">Your awesome chart will render here!</div>
+            <canvas id="myChart" style="width:100%;max-width:1200px; color:rgb(228, 228, 230);"></canvas>
+            <script>
+
+                const xValues = [0,1];
+                const yValues = [0,1];
+
+                new Chart("myChart", {
+                    type: "line",
+                    data: {
+                        labels: xValues,
+                        datasets: [{
+                            backgroundColor: "rgba(0,0,255,1.0)",
+                            borderColor: "rgba(0,0,255,0.1)",
+                            data: yValues
+                        }]
+                    },
+                    options: {
+                        // poți adăuga opțiuni aici, dacă ai nevoie
+                    }
+                });
+            </script>  -->
+            <!--------------------------------------------------------------------------------------------------------------- -->
+
+        </footer> 
+</body>
+</html>     

@@ -1,0 +1,21 @@
+html{
+    background: black;
+    color: white;
+}
+body {
+    display: grid;
+    place-items: center;
+    margin: 0;
+    font-family: Inter, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height:1.5em;
+}
+.Container { 
+    margin: 2vh;
+    background: rgba(75, 201, 77, 0.8);
+    padding:  2rem;
+    border-radius: 2rem;
+    font-size: clamp(1rem, 2vw, 2rem);
+    line-height: 1.5em;
+}
+
