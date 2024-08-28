@@ -13,13 +13,15 @@ unsigned long Tc;
 float microFarads;                // floating point variable to preserve precision, make calculations
 float nanoFarads;
 
-void setup() {
+void setup() 
+{
   pinMode(chargePin, OUTPUT);     // chargePin iesire
   digitalWrite(chargePin, LOW);  // chargePin LOW= 0[V]
   Serial.begin(9600);             // initialize serial transmission for debugging
 }
 
-void loop() {
+void loop() 
+{
  
   int readData = DHT.read11(dataPin);
   // float temperatura = DHT.temperature;
@@ -46,31 +48,32 @@ void loop() {
  
 //calcul capacitate senzor si control afisare serial microF sau nF  
   microFarads = ((float)Tc) / rezistorValue*1000; // C=Tc/R de retinut conversia unitatilor de masura  
- if (microFarads > 1){
+ if (microFarads > 1)
+ {
     Serial.print(microFarads);       // print the value to serial port
-    Serial.println(" [uF]");     // print units and carriage return
+    Serial.println(" [uF]");         // print units and carriage return
  }
 
- else{
+ else
+ {
     // if value is smaller than one microFarad, convert to nanoFarads (10^-9 Farad). 
     // This is  a workaround because Serial.print will not print floats
    nanoFarads = microFarads * 1000.0;      // multiply by 1000 to convert to nanoFarads (10^-9 Farads)
-   Serial.print(nanoFarads);         // print the value to serial port
-   Serial.println(" [nF]   ");          // print units and carriage return
+   Serial.print(nanoFarads);               // print the value to serial port
+   Serial.println(" [nF]   ");             // print units and carriage return
  }
   /* dicharge the capacitor  */
   digitalWrite(chargePin, LOW);             // chargePin LOW= 0[V]
   pinMode(dischargePin, OUTPUT);            // set discharge pin to output 
   digitalWrite(dischargePin, LOW);          // set discharge pin LOW 
-  while(analogRead(analogPin) >0){  }        // wait until capacitor is completely discharged
-  pinMode(dischargePin, INPUT);            // set discharge pin high impedance
+  while(analogRead(analogPin) >0)
+  {  }                                      // wait until capacitor is completely discharged
+  pinMode(dischargePin, INPUT);             // set discharge pin high impedance
  
   delay(2000);
 }
 
 /*  RCTiming_capacitance_meter
- *   Paul Badger 2008
- *   Paul Badger 2008
  *  Demonstrates use of RC time constants to measure the value of a capacitor 
  *
  * Theory   A capcitor will charge, through a resistor, in one time constant, defined as T seconds where
