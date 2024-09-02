@@ -33,8 +33,7 @@ Welcome to the Humidity Sensor Arduino Project! This project involves creating a
 <p align="center">
     <img src="https://github.com/user-attachments/assets/5086a559-b765-4a82-80e5-2f0851b851a4" alt="Hardware Setup" height="400"/>
 </p>
-<p align="center"><em>Figure 1: Hardware Setup - Arduino board, capacitor connected (TinkerCAD Simulation)
-https://www.tinkercad.com/things/dr2QzzeNIsl?sharecode=KYGpsa-w2-o5Wj-UnMkk2HqtVg5c03bUycDkxsM94os</em></p>
+<p align="center"><em>Figure 1: Hardware Setup - Arduino board, capacitor connected (TinkerCAD Simulation)</em></p>
 
 ## Software Architecture 🖥️
 
