@@ -28,32 +28,54 @@ Welcome to the Humidity Sensor Arduino Project! This project involves creating a
    - **Flask Application**: Uses the Flask library to connect to an HTML page.
    - **HTML Page**: Visualizes data from the sensors and updates regularly.
 
-## Hardware Setup 🖥️
+## Hardware Setup 📐
 
-![Hardware Setup](https://github.com/user-attachments/assets/5086a559-b765-4a82-80e5-2f0851b851a4)
+<p align="center">
+    <img src="https://github.com/user-attachments/assets/5086a559-b765-4a82-80e5-2f0851b851a4" alt="Hardware Setup" height="400"/>
+</p>
+<p align="center"><em>Figure 1: Hardware Setup - Arduino board, capacitor connected (TinkerCAD Simulation)</em></p>
 
-## Circuit Diagram 📐
+## Software Architecture 🖥️
 
-![Circuit Diagram](https://github.com/user-attachments/assets/0d41b284-9c0e-4334-aeef-f36066d1e462)
+<p align="center">
+    <img src="https://github.com/user-attachments/assets/0d41b284-9c0e-4334-aeef-f36066d1e462" alt="Circuit Diagram" height="400"/>
+</p>
+<p align="center"><em>Figure 2: Software Architecture - Integration of Arduino, Python, and web interface</em></p>
 
 ## Web Interface Functionality 🌐
 
-![Web Interface Functionality](https://github.com/user-attachments/assets/6dc1a38d-12cc-41d2-b857-801ecb290c5b)
+<p align="center">
+    <img src="https://github.com/user-attachments/assets/6dc1a38d-12cc-41d2-b857-801ecb290c5b" alt="Web Interface Functionality" height="400"/>
+</p>
+<p align="center"><em>Figure 3: Web Interface Functionality - Data visualization and real-time updates</em></p>
 
 ## Python Code Functionality 🐍
 
-![Python Code Functionality](https://github.com/user-attachments/assets/e83e3047-3f5c-4148-99fe-b1e3402c0e92)
+<p align="center">
+    <img src="https://github.com/user-attachments/assets/e83e3047-3f5c-4148-99fe-b1e3402c0e92" alt="Python Code Functionality" height="400"/>
+</p>
+<p align="center"><em>Figure 4: Python Code Flow - Data reading, calibration, and storage</em></p>
 
 ## Components 📏🔬
 
 | DHT11 Sensor | Capacitor Component |
 |--------------|----------------------|
-| ![DHT11 Sensor](https://github.com/user-attachments/assets/fb76e997-f066-4d98-b16e-8645b2882833) | ![Capacitor](https://github.com/user-attachments/assets/a9dae5d5-da76-422e-98db-f3c1bf712196) |
+| <img src="https://github.com/user-attachments/assets/fb76e997-f066-4d98-b16e-8645b2882833" alt="DHT11 Sensor" height="200"/> | <img src="https://github.com/user-attachments/assets/a9dae5d5-da76-422e-98db-f3c1bf712196" alt="Capacitor" height="200"/> |
 
+<p align="center"><em>Figure 5: DHT11 Sensor and Capacitor Component used for Humidity Measurement</em></p>
+
+<p align="center">
+    <img src="https://github.com/user-attachments/assets/2f567a5e-2e30-44bc-8500-35cfd9e5d149" alt="Capacitor_Charge-Discharge" height="400"/>
+</p>
+<p align="center"><em>Figure 6: Capacitor Charge-Discharge Cycle for Humidity Measurement</em></p>
+
+<p align="center">
+    <img src="https://github.com/user-attachments/assets/6cc8c13f-bb5b-4141-9b0c-ebad6957710d" alt="Value_DHTvsCapacitor" height="400"/>
+</p>
+<p align="center"><em>Figure 7: Comparison of Humidity Values between DHT11 Sensor and Capacitor</em></p>
 
 ## Conclusion 🎯
 
 This project effectively demonstrates the integration of analog and digital components to create a functional humidity sensor system. The combination of Arduino, Python, and web technologies provides a comprehensive solution for environmental monitoring.
 
 Feel free to explore the project and contribute to its development!
-
